@@ -2,6 +2,8 @@ import SwiftUI
 
 @main
 struct CodeEditorApp: App {
+    @NSApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
+
     var body: some Scene {
         WindowGroup {
             ContentView()
