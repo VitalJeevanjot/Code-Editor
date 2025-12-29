@@ -8,6 +8,7 @@ struct CodeEditorApp: App {
         WindowGroup {
             ContentView()
                 .frame(minWidth: 900, minHeight: 600)
+                .environmentObject(AppState.shared)
         }
         .windowResizability(.contentMinSize)
     }

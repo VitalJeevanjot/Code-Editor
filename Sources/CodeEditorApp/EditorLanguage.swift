@@ -191,4 +191,30 @@ enum EditorLanguage: String, CaseIterable, Identifiable {
             ]
         }
     }
+
+    var fileExtensions: [String] {
+        switch self {
+        case .javascript:
+            return ["js", "mjs", "cjs"]
+        case .typescript:
+            return ["ts", "tsx"]
+        case .go:
+            return ["go"]
+        case .rust:
+            return ["rs"]
+        case .html:
+            return ["html", "htm"]
+        case .css:
+            return ["css"]
+        }
+    }
+
+    static func language(for url: URL) -> EditorLanguage? {
+        let ext = url.pathExtension.lowercased()
+        return allCases.first { $0.fileExtensions.contains(ext) }
+    }
+
+    static var allExtensions: [String] {
+        allCases.flatMap { $0.fileExtensions }
+    }
 }
